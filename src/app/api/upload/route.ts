@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server';
 import { writeFile } from 'fs/promises';
 import { join } from 'path';
 import { getSession } from '@/lib/session';
-import { v4 as uuidv4 } from 'uuid';
 
 export async function POST(request: Request) {
   try {
@@ -24,7 +23,7 @@ export async function POST(request: Request) {
     // Ensure safe filename and unique name
     const originalName = file.name;
     const extension = originalName.split('.').pop();
-    const safeName = `${uuidv4()}.${extension}`;
+    const safeName = `${crypto.randomUUID()}.${extension}`;
 
     const path = join(process.cwd(), 'public', 'uploads', safeName);
     
