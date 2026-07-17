@@ -1,0 +1,70 @@
+:root {
+  /* ═══════════════════════════════════════════════
+     Tvardita Brand — White & Green Palette
+     ═══════════════════════════════════════════════ */
+
+  /* Primary Green (from the reference site) */
+  --green-50:  #f0fdf4;
+  --green-100: #dcfce7;
+  --green-200: #bbf7d0;
+  --green-300: #86efac;
+  --green-400: #4ade80;
+  --green-500: #3d8b37;
+  --green-600: #2d7a2a;
+  --green-700: #266d23;
+  --green-800: #1a5c18;
+  --green-900: #14481e;
+
+  /* Navigation Green (dark, like the reference header) */
+  --nav-green:        #3d8b37;
+  --nav-green-hover:  #348030;
+  --nav-green-dark:   #2a6b25;
+
+  /* Gold Accent */
+  --gold-400: #e5b94e;
+  --gold-500: #d4a73a;
+  --gold-600: #c09530;
+
+  /* ─── Surfaces ─── */
+  --color-surface-page:    #ffffff;
+  --color-surface-section: #f7faf7;
+  --color-surface-muted:   #f1f5f1;
+  --color-surface-raised:  #ffffff;
+
+  /* ─── Text ─── */
+  --color-text-heading:   #1a2e1a;
+  --color-text-primary:   #2d3b2d;
+  --color-text-secondary: #5a6b5a;
+  --color-text-muted:     #8a9b8a;
+  --color-text-on-green:  #ffffff;
+
+  /* ─── Borders ─── */
+  --color-border:       #e2e8e2;
+  --color-border-light: #eef2ee;
+
+  /* ─── Semantic ─── */
+  --color-success:     #10b981;
+  --color-warning:     #f59e0b;
+  --color-danger:      #dc2626;
+  --color-information: #2563eb;
+
+  /* ─── Shadows ─── */
+  --shadow-sm:  0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md:  0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-lg:  0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 2px 8px rgba(45, 122, 42, 0.08);
+
+  /* ─── Radii ─── */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* ─── Typography ─── */
+  --font-sans:    'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Montserrat', 'Inter', system-ui, sans-serif;
+
+  /* ─── Spacing ─── */
+  --container-max: 1240px;
+  --section-py:    80px;
+}

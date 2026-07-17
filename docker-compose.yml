@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: tvardita_db
+    restart: always
+    environment:
+      POSTGRES_USER: tvardita_user
+      POSTGRES_PASSWORD: tvardita_password
+      POSTGRES_DB: tvardita
+    ports:
+      - '5433:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tvardita_user -d tvardita"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:
