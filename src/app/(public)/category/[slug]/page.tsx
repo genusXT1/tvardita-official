@@ -5,14 +5,16 @@ import { db } from '@/lib/db';
 import { Calendar, Eye } from 'lucide-react';
 
 interface CategoryPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
+  const { slug } = await params;
+  
   const category = await db.category.findUnique({
-    where: { slug: params.slug },
+    where: { slug },
     include: {
       articles: {
         orderBy: { createdAt: 'desc' }
