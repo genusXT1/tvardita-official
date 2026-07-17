@@ -45,11 +45,11 @@ export default async function Home() {
                 <input
                   type="text"
                   placeholder="Что вы ищете? (справки, график, документы...)"
-                  className="flex-grow px-5 py-3.5 rounded-l-lg text-foreground placeholder:text-text-muted focus:outline-none text-[0.9375rem]"
+                  className="flex-grow min-w-0 px-5 py-3.5 rounded-l-lg text-foreground placeholder:text-text-muted focus:outline-none text-[0.9375rem]"
                 />
                 <button className="btn-primary rounded-lg px-7 flex-shrink-0">
                   <Search className="w-5 h-5" />
-                  <span className="hidden sm:inline">Найти</span>
+                  <span className="hidden sm:inline ml-2">Найти</span>
                 </button>
               </div>
             </div>
@@ -60,8 +60,8 @@ export default async function Home() {
       {/* ═══════════════════════════════════════════
           QUICK SERVICES — Icon Cards
           ═══════════════════════════════════════════ */}
-      <section className="container-site -mt-10 relative z-20 mb-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+      <section className="container-site -mt-10 relative z-20 mb-16 px-4 md:px-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {[
             { icon: FileText, title: 'Документы', desc: 'Решения, распоряжения', href: '/documents', color: 'text-green-600' },
             { icon: MessageSquare, title: 'Обращения', desc: 'Жалобы и предложения', href: '/services/appeals', color: 'text-blue-600' },

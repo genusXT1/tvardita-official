@@ -1,14 +1,25 @@
-import React from 'react';
+"use client";
+
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { Phone, Mail, Clock, MapPin, ChevronDown, ExternalLink } from 'lucide-react';
+import { Phone, Mail, Clock, MapPin, ChevronDown, Menu, X } from 'lucide-react';
 import { FacebookIcon, YoutubeIcon } from '@/components/ui/Icons';
 
 export default function PublicLayout({ children }: { children: React.ReactNode }) {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mobileMenuOpenSection, setMobileMenuOpenSection] = useState<string | null>(null);
+
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  
+  const toggleMobileSection = (section: string) => {
+    setMobileMenuOpenSection(mobileMenuOpenSection === section ? null : section);
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-white">
 
-      {/* ═══ Top Info Bar (white, slim) ═══ */}
-      <div className="bg-white border-b border-border-light">
+      {/* ═══ Top Info Bar (white, slim) - Hidden on very small screens ═══ */}
+      <div className="bg-white border-b border-border-light hidden sm:block">
         <div className="container-site flex justify-between items-center py-2 text-sm text-foreground-muted">
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-1.5">
@@ -21,7 +32,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
             </span>
           </div>
           <div className="flex items-center gap-4">
-            <span className="hidden sm:flex items-center gap-1.5">
+            <span className="hidden lg:flex items-center gap-1.5">
               <Clock className="w-3.5 h-3.5" />
               Пн-Пт: 08:00 - 17:00
             </span>
@@ -39,24 +50,24 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
       {/* ═══ Main Header (Logo + City Name) ═══ */}
       <header className="bg-white py-4 border-b border-border">
         <div className="container-site flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-4 group">
+          <Link href="/" className="flex items-center gap-3 md:gap-4 group z-50">
             <img
               src="/logo.png"
               alt="Герб города Твардица"
-              className="h-16 w-auto drop-shadow-sm"
+              className="h-12 md:h-16 w-auto drop-shadow-sm"
             />
             <div className="flex flex-col">
-              <span className="text-2xl font-extrabold text-heading leading-tight tracking-tight" style={{ fontFamily: 'var(--font-heading)' }}>
-                Примэрия города Твардица
+              <span className="text-lg md:text-2xl font-extrabold text-heading leading-tight tracking-tight" style={{ fontFamily: 'var(--font-heading)' }}>
+                Примэрия г. Твардица
               </span>
-              <span className="text-sm text-foreground-muted">
+              <span className="text-xs md:text-sm text-foreground-muted">
                 Primăria orașului Tvardița
               </span>
             </div>
           </Link>
 
-          {/* Social Links */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* Social Links - Desktop only */}
+          <div className="hidden lg:flex items-center gap-3">
             <a href="https://www.facebook.com/primariatvardita" target="_blank" rel="noopener noreferrer"
                className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-200">
               <FacebookIcon className="w-5 h-5" />
@@ -66,11 +77,20 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
               <YoutubeIcon className="w-5 h-5" />
             </a>
           </div>
+
+          {/* Mobile Menu Toggle Button */}
+          <button 
+            className="lg:hidden p-2 text-foreground hover:bg-gray-100 rounded-md transition-colors z-50"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
+          </button>
         </div>
       </header>
 
-      {/* ═══ Green Navigation Bar ═══ */}
-      <nav className="bg-nav sticky top-0 z-50 shadow-md">
+      {/* ═══ Green Navigation Bar (Desktop) ═══ */}
+      <nav className="bg-nav sticky top-0 z-40 shadow-md hidden lg:block">
         <div className="container-site">
           <ul className="flex flex-wrap items-center gap-0">
             <li>
@@ -141,6 +161,98 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
         </div>
       </nav>
 
+      {/* ═══ Mobile Navigation Menu ═══ */}
+      {isMobileMenuOpen && (
+        <div className="lg:hidden fixed inset-0 top-[88px] sm:top-[128px] bg-white z-40 overflow-y-auto border-t border-border flex flex-col">
+          <ul className="flex flex-col w-full text-lg font-medium text-heading">
+            <li>
+              <Link 
+                href="/" 
+                className="block px-6 py-4 border-b border-border hover:bg-primary-light hover:text-primary transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Главная
+              </Link>
+            </li>
+
+            {/* Mobile Примэрия */}
+            <li>
+              <button 
+                className="flex items-center justify-between w-full px-6 py-4 border-b border-border hover:bg-primary-light hover:text-primary transition-colors"
+                onClick={() => toggleMobileSection('city-hall')}
+              >
+                Примэрия
+                <ChevronDown className={`w-5 h-5 transition-transform ${mobileMenuOpenSection === 'city-hall' ? 'rotate-180' : ''}`} />
+              </button>
+              {mobileMenuOpenSection === 'city-hall' && (
+                <div className="bg-gray-50 flex flex-col border-b border-border">
+                  <Link href="/city-hall/mayor" className="pl-10 pr-6 py-3 border-b border-border-light text-foreground text-base hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>Примар</Link>
+                  <Link href="/city-hall/departments" className="pl-10 pr-6 py-3 border-b border-border-light text-foreground text-base hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>Аппарат Примэрии</Link>
+                  <Link href="/city-hall/structure" className="pl-10 pr-6 py-3 text-foreground text-base hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>Подведомственные учреждения</Link>
+                </div>
+              )}
+            </li>
+
+            {/* Mobile Гор.Совет */}
+            <li>
+              <button 
+                className="flex items-center justify-between w-full px-6 py-4 border-b border-border hover:bg-primary-light hover:text-primary transition-colors"
+                onClick={() => toggleMobileSection('council')}
+              >
+                Гор.Совет
+                <ChevronDown className={`w-5 h-5 transition-transform ${mobileMenuOpenSection === 'council' ? 'rotate-180' : ''}`} />
+              </button>
+              {mobileMenuOpenSection === 'council' && (
+                <div className="bg-gray-50 flex flex-col border-b border-border">
+                  <Link href="/council" className="pl-10 pr-6 py-3 border-b border-border-light text-foreground text-base hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>Состав совета</Link>
+                  <Link href="/council/decisions" className="pl-10 pr-6 py-3 border-b border-border-light text-foreground text-base hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>Решения</Link>
+                  <Link href="/council/meetings" className="pl-10 pr-6 py-3 text-foreground text-base hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>Заседания (видео)</Link>
+                </div>
+              )}
+            </li>
+
+            <li>
+              <Link href="/news" className="block px-6 py-4 border-b border-border hover:bg-primary-light hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
+                Новости
+              </Link>
+            </li>
+            <li>
+              <Link href="/documents" className="block px-6 py-4 border-b border-border hover:bg-primary-light hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
+                Документы
+              </Link>
+            </li>
+            <li>
+              <Link href="/services/appeals" className="block px-6 py-4 border-b border-border hover:bg-primary-light hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
+                Обращения
+              </Link>
+            </li>
+            <li>
+              <Link href="/contacts" className="block px-6 py-4 border-b border-border hover:bg-primary-light hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
+                Контакты
+              </Link>
+            </li>
+          </ul>
+          
+          <div className="p-6 mt-auto">
+            <div className="flex items-center gap-4">
+               <a href="https://www.facebook.com/primariatvardita" target="_blank" rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                 <FacebookIcon className="w-6 h-6" />
+               </a>
+               <a href="https://www.youtube.com/@primariatvardita" target="_blank" rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                 <YoutubeIcon className="w-6 h-6" />
+               </a>
+            </div>
+            <div className="mt-6 flex gap-2 text-sm font-semibold">
+              <button className="text-primary hover:underline px-3 py-1 bg-primary/5 rounded-md">RU</button>
+              <button className="text-foreground hover:text-primary hover:underline px-3 py-1 hover:bg-primary/5 rounded-md">RO</button>
+              <button className="text-foreground hover:text-primary hover:underline px-3 py-1 hover:bg-primary/5 rounded-md">BG</button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* ═══ Main Content ═══ */}
       <main className="flex-grow">
         {children}
@@ -149,7 +261,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
       {/* ═══ Footer ═══ */}
       <footer className="bg-heading text-white mt-16">
         {/* Main footer content */}
-        <div className="container-site py-16">
+        <div className="container-site py-12 md:py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
 
             {/* Column 1: About */}
@@ -231,9 +343,9 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
 
         {/* Copyright bar */}
         <div className="border-t border-white/10">
-          <div className="container-site py-5 flex flex-col md:flex-row justify-between items-center text-xs text-white/50">
+          <div className="container-site py-5 flex flex-col md:flex-row justify-between items-center text-xs text-white/50 text-center md:text-left gap-3 md:gap-0">
             <span>© {new Date().getFullYear()} Примэрия города Твардица. Все права защищены.</span>
-            <Link href="/login" className="hover:text-white transition-colors mt-2 md:mt-0">
+            <Link href="/login" className="hover:text-white transition-colors">
               Вход для администраторов
             </Link>
           </div>
