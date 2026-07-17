@@ -35,27 +35,30 @@ model Permission {
 }
 
 model Category {
-  id       String    @id @default(cuid())
-  slug     String    @unique
-  name     String
-  articles Article[]
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  name        String
+  description String?
+  legacyUrl   String?
+  articles    Article[]
 }
 
 model Article {
-  id          String   @id @default(cuid())
-  slug        String   @unique
+  id          String    @id @default(cuid())
+  slug        String    @unique
   title       String
   excerpt     String?
   content     String
-  language    String   @default("ru")
-  status      String   @default("published")
+  imageUrl    String?
+  language    String    @default("ru")
+  status      String    @default("published")
   categoryId  String?
   category    Category? @relation(fields: [categoryId], references: [id])
   authorId    String?
   author      User?     @relation(fields: [authorId], references: [id])
   legacyUrl   String?   @unique
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
   publishedAt DateTime?
 }
 

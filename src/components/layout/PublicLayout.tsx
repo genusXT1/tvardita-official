@@ -100,20 +100,20 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                 Основное <ChevronDown className="w-4 h-4 opacity-80" />
               </button>
               <div className="absolute top-full left-0 bg-[#252525] rounded-b shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 min-w-[260px] z-50 py-2">
-                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Президентура Республики Молдова</Link>
-                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">История города</Link>
-                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Наш храм</Link>
-                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Оперативный отдел</Link>
-                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Деятельность</Link>
-                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Полезная информация</Link>
-                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Центр Здоровья</Link>
-                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Объявления</Link>
-                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Поздравления</Link>
-                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Соболезнования</Link>
-                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Региональные новости</Link>
-                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Новости Молдовы</Link>
-                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Новости Болгарии</Link>
-                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Новости Украины</Link>
+                <Link href="/category/prezidentura-rmoldova" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Президентура Республики Молдова</Link>
+                <Link href="/category/istoriya" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">История города</Link>
+                <Link href="/category/nash-khram" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Наш храм</Link>
+                <Link href="/category/operativnyy-otdel" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Оперативный отдел</Link>
+                <Link href="/category/deyatelnost" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Деятельность</Link>
+                <Link href="/category/poleznye-ssylki" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Полезная информация</Link>
+                <Link href="/category/centr-zdorovya" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Центр Здоровья</Link>
+                <Link href="/category/obyavleniya" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Объявления</Link>
+                <Link href="/category/pozdravleniya" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Поздравления</Link>
+                <Link href="/category/soboleznovaniya" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Соболезнования</Link>
+                <Link href="/category/regionalnye-novosti" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Региональные новости</Link>
+                <Link href="/category/novosti-moldovy" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Новости Молдовы</Link>
+                <Link href="/category/novosti-bolgarii" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Новости Болгарии</Link>
+                <Link href="/category/novosti-ukrainy" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Новости Украины</Link>
               </div>
             </li>
 
@@ -213,20 +213,20 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
               </button>
               {mobileMenuOpenSection === 'main' && (
                 <div className="bg-[#1a1a1a] flex flex-col">
-                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Президентура Республики Молдова</Link>
-                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>История города</Link>
-                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Наш храм</Link>
-                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Оперативный отдел</Link>
-                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Деятельность</Link>
-                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Полезная информация</Link>
-                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Центр Здоровья</Link>
-                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Объявления</Link>
-                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Поздравления</Link>
-                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Соболезнования</Link>
-                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Региональные новости</Link>
-                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Новости Молдовы</Link>
-                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Новости Болгарии</Link>
-                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Новости Украины</Link>
+                  <Link href="/category/prezidentura-rmoldova" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Президентура Республики Молдова</Link>
+                  <Link href="/category/istoriya" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>История города</Link>
+                  <Link href="/category/nash-khram" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Наш храм</Link>
+                  <Link href="/category/operativnyy-otdel" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Оперативный отдел</Link>
+                  <Link href="/category/deyatelnost" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Деятельность</Link>
+                  <Link href="/category/poleznye-ssylki" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Полезная информация</Link>
+                  <Link href="/category/centr-zdorovya" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Центр Здоровья</Link>
+                  <Link href="/category/obyavleniya" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Объявления</Link>
+                  <Link href="/category/pozdravleniya" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Поздравления</Link>
+                  <Link href="/category/soboleznovaniya" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Соболезнования</Link>
+                  <Link href="/category/regionalnye-novosti" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Региональные новости</Link>
+                  <Link href="/category/novosti-moldovy" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Новости Молдовы</Link>
+                  <Link href="/category/novosti-bolgarii" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Новости Болгарии</Link>
+                  <Link href="/category/novosti-ukrainy" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Новости Украины</Link>
                 </div>
               )}
             </li>
