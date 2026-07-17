@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Phone, Mail, Clock, MapPin, ChevronDown, Menu, X } from 'lucide-react';
+import { Phone, Mail, Clock, MapPin, ChevronDown, Menu, X, ChevronRight } from 'lucide-react';
 import { FacebookIcon, YoutubeIcon } from '@/components/ui/Icons';
 
 export default function PublicLayout({ children }: { children: React.ReactNode }) {
@@ -90,105 +90,163 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
       </header>
 
       {/* ═══ Green Navigation Bar (Desktop) ═══ */}
-      <nav className="bg-nav sticky top-0 z-40 shadow-md hidden lg:block">
+      <nav className="bg-[#4d9e38] sticky top-0 z-40 shadow-md hidden lg:block">
         <div className="container-site">
-          <ul className="flex flex-wrap items-center gap-0">
-            <li>
-              <Link href="/" className="block px-5 py-3.5 text-white font-semibold text-[0.9375rem] hover:bg-nav-hover transition-colors">
-                Главная
-              </Link>
+          <ul className="flex items-center text-white text-[15px] font-medium">
+            
+            {/* Основное dropdown */}
+            <li className="relative group">
+              <button className="flex items-center gap-1.5 px-4 py-4 hover:bg-[#3d832b] transition-colors cursor-pointer">
+                Основное <ChevronDown className="w-4 h-4 opacity-80" />
+              </button>
+              <div className="absolute top-full left-0 bg-[#252525] rounded-b shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 min-w-[260px] z-50 py-2">
+                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Президентура Республики Молдова</Link>
+                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">История города</Link>
+                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Наш храм</Link>
+                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Оперативный отдел</Link>
+                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Деятельность</Link>
+                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Полезная информация</Link>
+                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Центр Здоровья</Link>
+                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Объявления</Link>
+                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Поздравления</Link>
+                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Соболезнования</Link>
+                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Региональные новости</Link>
+                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Новости Молдовы</Link>
+                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Новости Болгарии</Link>
+                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Новости Украины</Link>
+              </div>
             </li>
 
             {/* Примэрия dropdown */}
             <li className="relative group">
-              <button className="flex items-center gap-1 px-5 py-3.5 text-white font-semibold text-[0.9375rem] hover:bg-nav-hover transition-colors">
-                Примэрия
-                <ChevronDown className="w-4 h-4 opacity-70" />
+              <button className="flex items-center gap-1.5 px-4 py-4 hover:bg-[#3d832b] transition-colors cursor-pointer">
+                Примэрия <ChevronDown className="w-4 h-4 opacity-80" />
               </button>
-              <div className="absolute top-full left-0 bg-white rounded-b-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 min-w-[240px] z-50 border border-border-light">
-                <Link href="/city-hall/mayor" className="block px-5 py-3 text-foreground hover:bg-primary-light hover:text-primary transition-colors text-sm font-medium border-b border-border-light">
-                  Примар
-                </Link>
-                <Link href="/city-hall/departments" className="block px-5 py-3 text-foreground hover:bg-primary-light hover:text-primary transition-colors text-sm font-medium border-b border-border-light">
-                  Аппарат Примэрии
-                </Link>
-                <Link href="/city-hall/structure" className="block px-5 py-3 text-foreground hover:bg-primary-light hover:text-primary transition-colors text-sm font-medium">
-                  Подведомственные учреждения
-                </Link>
+              <div className="absolute top-full left-0 bg-[#252525] rounded-b shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 min-w-[260px] z-50 py-2">
+                <Link href="/city-hall/mayor" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Примар</Link>
+                <Link href="/city-hall/departments" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Аппарат примэрии</Link>
+                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Международное сотрудничество</Link>
+                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Личности г.Твардица</Link>
+                <Link href="/news" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Новости г.Твардица</Link>
               </div>
             </li>
 
             {/* Гор.Совет dropdown */}
             <li className="relative group">
-              <button className="flex items-center gap-1 px-5 py-3.5 text-white font-semibold text-[0.9375rem] hover:bg-nav-hover transition-colors">
-                Гор.Совет
-                <ChevronDown className="w-4 h-4 opacity-70" />
+              <button className="flex items-center gap-1.5 px-4 py-4 hover:bg-[#3d832b] transition-colors cursor-pointer">
+                Гор.Совет <ChevronDown className="w-4 h-4 opacity-80" />
               </button>
-              <div className="absolute top-full left-0 bg-white rounded-b-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 min-w-[240px] z-50 border border-border-light">
-                <Link href="/council" className="block px-5 py-3 text-foreground hover:bg-primary-light hover:text-primary transition-colors text-sm font-medium border-b border-border-light">
-                  Состав совета
-                </Link>
-                <Link href="/council/decisions" className="block px-5 py-3 text-foreground hover:bg-primary-light hover:text-primary transition-colors text-sm font-medium border-b border-border-light">
-                  Решения
-                </Link>
-                <Link href="/council/meetings" className="block px-5 py-3 text-foreground hover:bg-primary-light hover:text-primary transition-colors text-sm font-medium">
-                  Заседания (видео)
-                </Link>
+              <div className="absolute top-full left-0 bg-[#252525] rounded-b shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 min-w-[220px] z-50 py-2">
+                <Link href="/council" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Городской совет</Link>
+                <Link href="/council/decisions" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Решения</Link>
+                <Link href="/council/meetings" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Заседания (Video)</Link>
               </div>
             </li>
 
-            <li>
-              <Link href="/news" className="block px-5 py-3.5 text-white font-semibold text-[0.9375rem] hover:bg-nav-hover transition-colors">
-                Новости
-              </Link>
+            {/* Подведомственные учреждения dropdown */}
+            <li className="relative group">
+              <button className="flex items-center gap-1.5 px-4 py-4 hover:bg-[#3d832b] transition-colors cursor-pointer">
+                Подведомственные учреждения <ChevronDown className="w-4 h-4 opacity-80" />
+              </button>
+              <div className="absolute top-full left-0 bg-[#252525] rounded-b shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 min-w-[320px] z-50 py-2">
+                <div className="relative group/sub">
+                  <Link href="#" className="flex items-center justify-between px-5 py-2.5 hover:bg-[#333] transition-colors">
+                    Культурно-Спортивный Комплекс им. П.М. Парликова
+                    <ChevronRight className="w-4 h-4" />
+                  </Link>
+                </div>
+                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Музей</Link>
+                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Школа искусств</Link>
+                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Библиотеки</Link>
+                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Реабилитационный центр</Link>
+                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Социальный центр</Link>
+                <div className="relative group/sub">
+                  <Link href="#" className="flex items-center justify-between px-5 py-2.5 hover:bg-[#333] transition-colors">
+                    Детский сад
+                    <ChevronRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
             </li>
-            <li>
-              <Link href="/documents" className="block px-5 py-3.5 text-white font-semibold text-[0.9375rem] hover:bg-nav-hover transition-colors">
-                Документы
-              </Link>
+
+            {/* Образование dropdown */}
+            <li className="relative group">
+              <button className="flex items-center gap-1.5 px-4 py-4 hover:bg-[#3d832b] transition-colors cursor-pointer">
+                Образование <ChevronDown className="w-4 h-4 opacity-80" />
+              </button>
+              <div className="absolute top-full left-0 bg-[#252525] rounded-b shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 min-w-[240px] z-50 py-2">
+                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Теоретический лицей</Link>
+                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Музыкальный колледж</Link>
+                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">ДЮСШ спорт</Link>
+              </div>
             </li>
-            <li>
-              <Link href="/services/appeals" className="block px-5 py-3.5 text-white font-semibold text-[0.9375rem] hover:bg-nav-hover transition-colors">
-                Обращения
-              </Link>
+
+            {/* Твардисан dropdown */}
+            <li className="relative group">
+              <button className="flex items-center gap-1.5 px-4 py-4 hover:bg-[#3d832b] transition-colors cursor-pointer">
+                Твардисан <ChevronDown className="w-4 h-4 opacity-80" />
+              </button>
+              <div className="absolute top-full left-0 bg-[#252525] rounded-b shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 min-w-[200px] z-50 py-2">
+                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">О предприятии</Link>
+                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Услуги</Link>
+                <Link href="#" className="block px-5 py-2.5 hover:bg-[#333] transition-colors">Контакты</Link>
+              </div>
             </li>
-            <li>
-              <Link href="/contacts" className="block px-5 py-3.5 text-white font-semibold text-[0.9375rem] hover:bg-nav-hover transition-colors">
-                Контакты
-              </Link>
-            </li>
+
           </ul>
         </div>
       </nav>
 
       {/* ═══ Mobile Navigation Menu ═══ */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 top-[88px] sm:top-[128px] bg-white z-40 overflow-y-auto border-t border-border flex flex-col">
-          <ul className="flex flex-col w-full text-lg font-medium text-heading">
+        <div className="lg:hidden fixed inset-0 top-[88px] sm:top-[128px] bg-[#252525] text-white z-40 overflow-y-auto">
+          <ul className="flex flex-col w-full text-base font-medium">
+            
+            {/* Mobile Основное */}
             <li>
-              <Link 
-                href="/" 
-                className="block px-6 py-4 border-b border-border hover:bg-primary-light hover:text-primary transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
+              <button 
+                className="flex items-center justify-between w-full px-6 py-4 border-b border-white/10 hover:bg-white/5 transition-colors"
+                onClick={() => toggleMobileSection('main')}
               >
-                Главная
-              </Link>
+                Основное
+                <ChevronDown className={`w-5 h-5 transition-transform ${mobileMenuOpenSection === 'main' ? 'rotate-180' : ''}`} />
+              </button>
+              {mobileMenuOpenSection === 'main' && (
+                <div className="bg-[#1a1a1a] flex flex-col">
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Президентура Республики Молдова</Link>
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>История города</Link>
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Наш храм</Link>
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Оперативный отдел</Link>
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Деятельность</Link>
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Полезная информация</Link>
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Центр Здоровья</Link>
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Объявления</Link>
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Поздравления</Link>
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Соболезнования</Link>
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Региональные новости</Link>
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Новости Молдовы</Link>
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Новости Болгарии</Link>
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Новости Украины</Link>
+                </div>
+              )}
             </li>
 
             {/* Mobile Примэрия */}
             <li>
               <button 
-                className="flex items-center justify-between w-full px-6 py-4 border-b border-border hover:bg-primary-light hover:text-primary transition-colors"
+                className="flex items-center justify-between w-full px-6 py-4 border-b border-white/10 hover:bg-white/5 transition-colors"
                 onClick={() => toggleMobileSection('city-hall')}
               >
                 Примэрия
                 <ChevronDown className={`w-5 h-5 transition-transform ${mobileMenuOpenSection === 'city-hall' ? 'rotate-180' : ''}`} />
               </button>
               {mobileMenuOpenSection === 'city-hall' && (
-                <div className="bg-gray-50 flex flex-col border-b border-border">
-                  <Link href="/city-hall/mayor" className="pl-10 pr-6 py-3 border-b border-border-light text-foreground text-base hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>Примар</Link>
-                  <Link href="/city-hall/departments" className="pl-10 pr-6 py-3 border-b border-border-light text-foreground text-base hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>Аппарат Примэрии</Link>
-                  <Link href="/city-hall/structure" className="pl-10 pr-6 py-3 text-foreground text-base hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>Подведомственные учреждения</Link>
+                <div className="bg-[#1a1a1a] flex flex-col">
+                  <Link href="/city-hall/mayor" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Примар</Link>
+                  <Link href="/city-hall/departments" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Аппарат примэрии</Link>
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Международное сотрудничество</Link>
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Личности г.Твардица</Link>
+                  <Link href="/news" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Новости г.Твардица</Link>
                 </div>
               )}
             </li>
@@ -196,58 +254,96 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
             {/* Mobile Гор.Совет */}
             <li>
               <button 
-                className="flex items-center justify-between w-full px-6 py-4 border-b border-border hover:bg-primary-light hover:text-primary transition-colors"
+                className="flex items-center justify-between w-full px-6 py-4 border-b border-white/10 hover:bg-white/5 transition-colors"
                 onClick={() => toggleMobileSection('council')}
               >
                 Гор.Совет
                 <ChevronDown className={`w-5 h-5 transition-transform ${mobileMenuOpenSection === 'council' ? 'rotate-180' : ''}`} />
               </button>
               {mobileMenuOpenSection === 'council' && (
-                <div className="bg-gray-50 flex flex-col border-b border-border">
-                  <Link href="/council" className="pl-10 pr-6 py-3 border-b border-border-light text-foreground text-base hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>Состав совета</Link>
-                  <Link href="/council/decisions" className="pl-10 pr-6 py-3 border-b border-border-light text-foreground text-base hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>Решения</Link>
-                  <Link href="/council/meetings" className="pl-10 pr-6 py-3 text-foreground text-base hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>Заседания (видео)</Link>
+                <div className="bg-[#1a1a1a] flex flex-col">
+                  <Link href="/council" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Городской совет</Link>
+                  <Link href="/council/decisions" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Решения</Link>
+                  <Link href="/council/meetings" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Заседания (Video)</Link>
                 </div>
               )}
             </li>
 
+            {/* Mobile Подведомственные учреждения */}
             <li>
-              <Link href="/news" className="block px-6 py-4 border-b border-border hover:bg-primary-light hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                Новости
-              </Link>
+              <button 
+                className="flex items-center justify-between w-full px-6 py-4 border-b border-white/10 hover:bg-white/5 transition-colors"
+                onClick={() => toggleMobileSection('structure')}
+              >
+                Подведомственные учреждения
+                <ChevronDown className={`w-5 h-5 transition-transform ${mobileMenuOpenSection === 'structure' ? 'rotate-180' : ''}`} />
+              </button>
+              {mobileMenuOpenSection === 'structure' && (
+                <div className="bg-[#1a1a1a] flex flex-col">
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>КСК им. П.М. Парликова</Link>
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Музей</Link>
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Школа искусств</Link>
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Библиотеки</Link>
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Реабилитационный центр</Link>
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Социальный центр</Link>
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Детский сад</Link>
+                </div>
+              )}
             </li>
+
+            {/* Mobile Образование */}
             <li>
-              <Link href="/documents" className="block px-6 py-4 border-b border-border hover:bg-primary-light hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                Документы
-              </Link>
+              <button 
+                className="flex items-center justify-between w-full px-6 py-4 border-b border-white/10 hover:bg-white/5 transition-colors"
+                onClick={() => toggleMobileSection('education')}
+              >
+                Образование
+                <ChevronDown className={`w-5 h-5 transition-transform ${mobileMenuOpenSection === 'education' ? 'rotate-180' : ''}`} />
+              </button>
+              {mobileMenuOpenSection === 'education' && (
+                <div className="bg-[#1a1a1a] flex flex-col">
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Теоретический лицей</Link>
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Музыкальный колледж</Link>
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>ДЮСШ спорт</Link>
+                </div>
+              )}
             </li>
+
+            {/* Mobile Твардисан */}
             <li>
-              <Link href="/services/appeals" className="block px-6 py-4 border-b border-border hover:bg-primary-light hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                Обращения
-              </Link>
+              <button 
+                className="flex items-center justify-between w-full px-6 py-4 border-b border-white/10 hover:bg-white/5 transition-colors"
+                onClick={() => toggleMobileSection('tvardisan')}
+              >
+                Твардисан
+                <ChevronDown className={`w-5 h-5 transition-transform ${mobileMenuOpenSection === 'tvardisan' ? 'rotate-180' : ''}`} />
+              </button>
+              {mobileMenuOpenSection === 'tvardisan' && (
+                <div className="bg-[#1a1a1a] flex flex-col">
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>О предприятии</Link>
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Услуги</Link>
+                  <Link href="#" className="pl-10 pr-6 py-3 border-b border-white/5 hover:text-[#4d9e38]" onClick={toggleMobileMenu}>Контакты</Link>
+                </div>
+              )}
             </li>
-            <li>
-              <Link href="/contacts" className="block px-6 py-4 border-b border-border hover:bg-primary-light hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                Контакты
-              </Link>
-            </li>
+
           </ul>
           
           <div className="p-6 mt-auto">
             <div className="flex items-center gap-4">
                <a href="https://www.facebook.com/primariatvardita" target="_blank" rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                  className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-[#4d9e38]">
                  <FacebookIcon className="w-6 h-6" />
                </a>
                <a href="https://www.youtube.com/@primariatvardita" target="_blank" rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                  className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-[#4d9e38]">
                  <YoutubeIcon className="w-6 h-6" />
                </a>
             </div>
             <div className="mt-6 flex gap-2 text-sm font-semibold">
-              <button className="text-primary hover:underline px-3 py-1 bg-primary/5 rounded-md">RU</button>
-              <button className="text-foreground hover:text-primary hover:underline px-3 py-1 hover:bg-primary/5 rounded-md">RO</button>
-              <button className="text-foreground hover:text-primary hover:underline px-3 py-1 hover:bg-primary/5 rounded-md">BG</button>
+              <button className="text-[#4d9e38] hover:underline px-3 py-1 bg-white/5 rounded-md">RU</button>
+              <button className="text-white hover:text-[#4d9e38] hover:underline px-3 py-1 hover:bg-white/5 rounded-md">RO</button>
+              <button className="text-white hover:text-[#4d9e38] hover:underline px-3 py-1 hover:bg-white/5 rounded-md">BG</button>
             </div>
           </div>
         </div>
