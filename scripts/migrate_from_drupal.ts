@@ -1,10 +1,15 @@
+import 'dotenv/config';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 import { PrismaClient } from '@prisma/client';
+import { Pool } from 'pg';
+import { PrismaPg } from '@prisma/adapter-pg';
 import fs from 'fs';
 import path from 'path';
 
-const prisma = new PrismaClient();
+const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+const adapter = new PrismaPg(pool);
+const prisma = new PrismaClient({ adapter });
 
 const CATEGORIES = [
   { url: 'https://tvardita.md/article/category/prezidentura-rmoldova', slug: 'prezidentura-rmoldova' },
